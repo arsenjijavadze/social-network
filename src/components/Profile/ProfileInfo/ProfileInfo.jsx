@@ -7,7 +7,7 @@ const ProfileInfo = () => {
             <div>
                 <img src='https://t3.ftcdn.net/jpg/02/04/13/52/360_F_204135260_LfG6JsgMDeunFydneprDFvrzRMOjRZGd.jpg' />
             </div>
-            <div>
+            <div className={classes.descriptionBlock}>
                 ava + description
             </div>
 
