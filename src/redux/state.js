@@ -26,13 +26,13 @@ let state = {
             { id: 5, message: 'Hi' },
 
         ],
-        newMessageText: 'Word'
+        newMessageText: 'words'
     }
 }
 
 // posts
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
         message: state.profilePage.newPostText,
@@ -50,8 +50,8 @@ export let updateNewPostText = (newText) => {
     rerenderEntireTree(state);
 }
 
-//message
-export let addMessage = (message) => {
+//messages
+export let addMessage = () => {
     let newMessage = {
         id: 6,
         message: state.dialogsPage.newMessageText,
@@ -61,8 +61,9 @@ export let addMessage = (message) => {
     rerenderEntireTree(state);
 }
 
-export let updateNewMessageText = (newMessage) => {
-    state.dialogsPage.newMessageText = newMessage;
+export let updateNewMessageText = (newText) => {
+
+    state.dialogsPage.newMessageText = newText;
     rerenderEntireTree(state);
 }
 
