@@ -28,41 +28,44 @@ let store = {
             newMessageText: 'words'
         }
     },
-    rerenderEntireTree() {
+    getState() {
+        return this._state;
+    },
+    _callSubscriber() {
         console.log('State changed');
     },
     addPost() {
         let newPost = {
             id: 5,
-            message: state.profilePage.newPostText,
+            message: this._state.profilePage.newPostText,
             likesCount: 0
-        }
-        state.profilePage.posts.push(newPost);
-        state.profilePage.newPostText = '';
-        rerenderEntireTree(state);
+        };
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state);
     },
     updateNewPostText(newText) {
 
-        state.profilePage.newPostText = newText;
-        rerenderEntireTree(state);
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state);
     },
     addMessage() {
         let newMessage = {
             id: 6,
-            message: state.dialogsPage.newMessageText,
+            message: this._state.dialogsPage.newMessageText,
         }
-        state.dialogsPage.messages.push(newMessage);
-        state.dialogsPage.newMessageText = '';
-        rerenderEntireTree(state);
+        this._state.dialogsPage.messages.push(newMessage);
+        this._state.dialogsPage.newMessageText = '';
+        this._callSubscriber(this._state);
     },
 
     updateNewMessageText(newText) {
 
-        state.dialogsPage.newMessageText = newText;
-        rerenderEntireTree(state);
+        this._state.dialogsPage.newMessageText = newText;
+        this._callSubscriber(this._state);
     },
     subscribe(observer) {
-        rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     }
 }
 
@@ -72,4 +75,5 @@ let store = {
 
 
 export default store;
+
 window.store = store;
