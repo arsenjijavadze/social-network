@@ -2,6 +2,12 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
+let addPostActionCreator = () => {
+    return {
+        type: 'ADD_POST'
+    }
+}
+
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} />)
@@ -10,7 +16,7 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         //props.addPost();
-        props.dispatch({ type: 'ADD-POST' });
+        props.dispatch(addPostActionCreator());
     }
 
     let onPostChange = () => {
