@@ -30,7 +30,7 @@ let store = {
                 { id: 5, message: 'Hi' },
 
             ],
-            newMessageText: 'words'
+            newMessageBody: ''
         }
     },
     _callSubscriber() {
@@ -60,13 +60,13 @@ let store = {
         } else if (action.type === SEND_MESSAGE) {
             let newMessage = {
                 id: 6,
-                message: this._state.dialogsPage.newMessageText,
+                message: this._state.dialogsPage.newMessageBody,
             }
             this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
+            this._state.dialogsPage.newMessageBody = '';
             this._callSubscriber(this._state);
         } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageText = action.newText;
+            this._state.dialogsPage.newMessageBody = action.body;
             this._callSubscriber(this._state);
         }
     }
@@ -82,13 +82,13 @@ export const updateNewPostTextActionCreator = (text) => (
     }
 )
 
-export const addMessageActionCreator = () => ({ type: SEND_MESSAGE })
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
 
 
-export const updateNewMessageTextActionCreator = (text) => (
+export const updateNewMessageBodyCreator = (body) => (
     {
         type: UPDATE_NEW_MESSAGE_BODY,
-        newText: text
+        body: body
     }
 )
 
